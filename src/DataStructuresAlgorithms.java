@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-
 /**
  *
  * @author bethan
@@ -10,10 +5,13 @@
 public class DataStructuresAlgorithms {
 
     /**
-     * @param args the command line arguments
+     * @param args Testing
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // Test cases for the AnagramChecker
+        System.out.println(AnagramChecker.isAnagram("listen", "silent")); // true
+        System.out.println(AnagramChecker.isAnagram("triangle", "integral")); // true
+        System.out.println(AnagramChecker.isAnagram("apple", "pale")); // false
     }
-    
+   
 }
