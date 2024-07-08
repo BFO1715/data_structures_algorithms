@@ -2,6 +2,7 @@
  *
  * @author bethan
  */
+import graph.DiGraph;
 import java.util.*;
 
 public class DataStructuresAlgorithms {
@@ -68,6 +69,33 @@ public class DataStructuresAlgorithms {
         // Calculate average overwait time
         double avgOverwaitTime = HospitalQueue.avgOverwaitTime(patients);
         System.out.println("Average overwait time: " + avgOverwaitTime + " minutes");
+        
+        System.out.println("----------------------------");
+        
+        // Test cases for the WebGraph
+        DiGraph<String> graph = new DiGraph<>();
+        graph.addEdge("A", "B");
+        graph.addEdge("A", "H"); 
+        graph.addEdge("B", "C");
+        graph.addEdge("C", "D");
+        graph.addEdge("D", "F");
+        graph.addEdge("E", "G");
+        graph.addEdge("F", "C");
+        graph.addEdge("F", "I");
+        graph.addEdge("G", "A");
+        graph.addEdge("H", "G");
+        graph.addEdge("I", "D");
+        graph.addEdge("I", "E");
+        graph.addEdge("J", "B"); 
+        graph.addEdge("J", "D");
+
+        // Get URLs from node "J" with max depth 3
+        Set<String> urlsFromJ = WebGraph.getURLs(graph, "J", 3);
+        System.out.println("URLs from J with max depth 3: " + urlsFromJ);
+
+        // Get URLs from node "E" with max depth 2
+        Set<String> urlsFromE = WebGraph.getURLs(graph, "E", 2);
+        System.out.println("URLs from E with max depth 2: " + urlsFromE);
         
     }
    
