@@ -3,6 +3,7 @@
  * @author bethan
  */
 import graph.DiGraph;
+import graph.WeightedDiGraph;
 import java.util.*;
 
 public class DataStructuresAlgorithms {
@@ -97,6 +98,29 @@ public class DataStructuresAlgorithms {
         Set<String> urlsFromE = WebGraph.getURLs(graph, "E", 2);
         System.out.println("URLs from E with max depth 2: " + urlsFromE);
         
+        System.out.println("----------------------------");
+        
+        // Test cases for the PopulationFlow
+        WeightedDiGraph<String, Integer> populationGraph = new WeightedDiGraph<>();
+        populationGraph.addEdge("A", "B", 1);
+        populationGraph.addEdge("A", "H", 9);
+        populationGraph.addEdge("B", "C", 2);
+        populationGraph.addEdge("C", "D", 1);
+        populationGraph.addEdge("D", "F", 8);
+        populationGraph.addEdge("E", "G", 3);
+        populationGraph.addEdge("F", "C", 14);
+        populationGraph.addEdge("F", "I", 11);
+        populationGraph.addEdge("G", "A", 2);
+        populationGraph.addEdge("H", "G", 10);
+        populationGraph.addEdge("I", "D", 6);
+        populationGraph.addEdge("I", "E", 12);
+        populationGraph.addEdge("J", "D", 9);
+        populationGraph.addEdge("J", "B", 14);
+
+        // Get declining cities
+        Set<String> decliningCities = PopulationFlow.getDecliningCities(populationGraph);
+        System.out.println("Declining cities: " + decliningCities);
     }
+ 
    
 }

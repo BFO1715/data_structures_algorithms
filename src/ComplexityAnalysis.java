@@ -1,6 +1,6 @@
 /**
  *
- * @author betha
+ * @author bethan
  */
 public class ComplexityAnalysis {
 
