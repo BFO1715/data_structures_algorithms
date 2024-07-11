@@ -120,7 +120,39 @@ public class DataStructuresAlgorithms {
         // Get declining cities
         Set<String> decliningCities = PopulationFlow.getDecliningCities(populationGraph);
         System.out.println("Declining cities: " + decliningCities);
+        
+        System.out.println("----------------------------");
+        
+        // Test cases for the vehicle charge
+                List<Capture> captures = new ArrayList<>();
+        captures.add(new Capture(1211424, "I", "GA13DSA"));
+        captures.add(new Capture(2223332, "A", "AC21WAT")); // This will be ignored for GA13DSA
+        captures.add(new Capture(3518399, "C", "GA13DSA"));
+        captures.add(new Capture(3658471, "D", "GA13DSA"));
+
+        WeightedDiGraph<String, Integer> cityGraph = new WeightedDiGraph<>();
+        cityGraph.addEdge("A", "B", 1);
+        cityGraph.addEdge("A", "H", 9);
+        cityGraph.addEdge("B", "C", 2);
+        cityGraph.addEdge("B", "J", 14);
+        cityGraph.addEdge("C", "D", 1);
+        cityGraph.addEdge("C", "F", 14);
+        cityGraph.addEdge("D", "F", 8);
+        cityGraph.addEdge("D", "J", 9);
+        cityGraph.addEdge("E", "G", 3);
+        cityGraph.addEdge("E", "I", 12);
+        cityGraph.addEdge("F", "C", 14);
+        cityGraph.addEdge("F", "I", 11);
+        cityGraph.addEdge("G", "A", 2);
+        cityGraph.addEdge("G", "H", 10);
+        cityGraph.addEdge("I", "D", 6);
+        cityGraph.addEdge("I", "E", 12);
+        cityGraph.addEdge("J", "D", 9);
+        cityGraph.addEdge("J", "B", 14);
+
+        int charge = VehicleChargeCalculator.getVehicleCharge(cityGraph, captures, "GA13DSA");
+        System.out.println("Vehicle charge for GA13DSA: " + charge + "p");
+        
     }
- 
-   
+    
 }
