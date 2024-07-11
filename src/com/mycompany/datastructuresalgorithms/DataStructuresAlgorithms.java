@@ -1,3 +1,5 @@
+package com.mycompany.datastructuresalgorithms;
+
 /**
  *
  * @author bethan
@@ -126,7 +128,7 @@ public class DataStructuresAlgorithms {
         // Test cases for the vehicle charge
                 List<Capture> captures = new ArrayList<>();
         captures.add(new Capture(1211424, "I", "GA13DSA"));
-        captures.add(new Capture(2223332, "A", "AC21WAT")); // This will be ignored for GA13DSA
+        captures.add(new Capture(2223332, "A", "AC21WAT")); // Ignored 
         captures.add(new Capture(3518399, "C", "GA13DSA"));
         captures.add(new Capture(3658471, "D", "GA13DSA"));
 
@@ -152,6 +154,14 @@ public class DataStructuresAlgorithms {
 
         int charge = VehicleChargeCalculator.getVehicleCharge(cityGraph, captures, "GA13DSA");
         System.out.println("Vehicle charge for GA13DSA: " + charge + "p");
+        
+        System.out.println("----------------------------");
+        
+        // Test cases for speeding vehicles
+        Set<String> speedingVehicles = VehicleChargeCalculator.getSpeedingVehicles(populationGraph, captures);
+        System.out.println("Speeding vehicles: " + speedingVehicles);
+        
+        System.out.println("----------------------------");
         
     }
     

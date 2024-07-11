@@ -1,3 +1,5 @@
+package com.mycompany.datastructuresalgorithms;
+
 /**
  *
  * @author bethan
@@ -33,7 +35,7 @@ public class VehicleChargeCalculator {
         return totalCharge;
     }
 
-    private static int getShortestDistance(WeightedDiGraph<String, Integer> graph, String start, String end) {
+    public static int getShortestDistance(WeightedDiGraph<String, Integer> graph, String start, String end) {
         Map<String, Integer> distances = new HashMap<>();
         PriorityQueue<Pair<Integer, String>> priorityQueue = new PriorityQueue<>(Comparator.comparing(Pair::getFirst));
         Set<String> visited = new HashSet<>();
@@ -67,6 +69,45 @@ public class VehicleChargeCalculator {
         }
 
         return Integer.MAX_VALUE; // If no path found, return a large number
+    }
+
+    public static Set<String> getSpeedingVehicles(WeightedDiGraph<String, Integer> graph, List<Capture> captures) {
+        Set<String> speedingVehicles = new HashSet<>();
+        Map<String, List<Capture>> vehicleCaptures = new HashMap<>();
+
+        // Group captures by vehicle registration number
+        for (Capture capture : captures) {
+            vehicleCaptures.computeIfAbsent(capture.getRegNum(), k -> new ArrayList<>()).add(capture);
+        }
+
+        // Calculate speed for each vehicle and check for speeding
+        for (Map.Entry<String, List<Capture>> entry : vehicleCaptures.entrySet()) {
+            List<Capture> vehicleCaptureList = entry.getValue();
+            if (vehicleCaptureList.size() < 2) {
+                continue; // Not enough data to determine speeding
+            }
+
+            for (int i = 0; i < vehicleCaptureList.size() - 1; i++) {
+                Capture startCapture = vehicleCaptureList.get(i);
+                Capture endCapture = vehicleCaptureList.get(i + 1);
+                String startLocation = startCapture.getLocation();
+                String endLocation = endCapture.getLocation();
+                int distance = getShortestDistance(graph, startLocation, endLocation);
+
+                long timeTakenMillis = endCapture.getTime() - startCapture.getTime();
+                double timeTakenHours = timeTakenMillis / 3600000.0; // Convert milliseconds to hours
+
+                if (timeTakenHours > 0) {
+                    double speed = distance / timeTakenHours;
+                    if (speed > 30) {
+                        speedingVehicles.add(entry.getKey());
+                        break; // No need to check further captures for this vehicle
+                    }
+                }
+            }
+        }
+
+        return speedingVehicles;
     }
 }
 
