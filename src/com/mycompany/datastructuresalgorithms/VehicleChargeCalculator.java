@@ -13,7 +13,7 @@ public class VehicleChargeCalculator {
     public static int getVehicleCharge(WeightedDiGraph<String, Integer> graph, List<Capture> captures, String regNum) {
         List<String> locations = new ArrayList<>();
         
-        // Filter captures for the specified registration number
+        // Filter captures for the registration number
         for (Capture capture : captures) {
             if (capture.getRegNum().equals(regNum)) {
                 locations.add(capture.getLocation());
@@ -84,7 +84,7 @@ public class VehicleChargeCalculator {
         for (Map.Entry<String, List<Capture>> entry : vehicleCaptures.entrySet()) {
             List<Capture> vehicleCaptureList = entry.getValue();
             if (vehicleCaptureList.size() < 2) {
-                continue; // Not enough data to determine speeding
+                continue; // Not enough data 
             }
 
             for (int i = 0; i < vehicleCaptureList.size() - 1; i++) {

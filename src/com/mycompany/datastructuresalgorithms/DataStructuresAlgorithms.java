@@ -14,14 +14,14 @@ public class DataStructuresAlgorithms {
      * @param args Testing
      */
     public static void main(String[] args) {
-        // Test cases for the AnagramChecker
+        // Test cases for the Anagram Checker
         System.out.println(AnagramChecker.isAnagram("listen", "silent")); // true
         System.out.println(AnagramChecker.isAnagram("triangle", "integral")); // true
         System.out.println(AnagramChecker.isAnagram("apple", "pale")); // false
         
         System.out.println("----------------------------");
     
-        // Test cases for the RecursiveSearch
+        // Test cases for the Recursive Search
         int[] array = {1, 2, 3, 4, 5};
         System.out.println(RecursiveSearch.search(array, 3)); // true
         System.out.println(RecursiveSearch.search(array, 6)); // false
@@ -30,7 +30,7 @@ public class DataStructuresAlgorithms {
         
         System.out.println("----------------------------");
 
-        // Test cases for the SetChecker
+        // Test cases for the Set Checker
         java.util.List<Integer> list1 = java.util.Arrays.asList(1, 2, 3, 4, 5);
         java.util.List<Integer> list2 = java.util.Arrays.asList(1, 2, 2, 4, 5);
         System.out.println(SetChecker.isSet(list1)); // true
@@ -38,7 +38,7 @@ public class DataStructuresAlgorithms {
         
          System.out.println("----------------------------");
 
-        // Test cases for the HospitalQueue
+        // Test cases for the Hospital Queue
         java.util.List<Patient> patients = new java.util.ArrayList<>();
         patients.add(new Patient(1, Priority.EMERGENCY, System.currentTimeMillis() - 60000)); // 1 minute ago
         patients.add(new Patient(2, Priority.URGENT, System.currentTimeMillis() - 120000)); // 2 minutes ago

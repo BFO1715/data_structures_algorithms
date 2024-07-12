@@ -18,14 +18,14 @@ public class PopulationFlow {
             int incoming = 0;
             int outgoing = 0;
 
-            // Calculate total incoming population
+            // Calculate total incoming people
             for (N neighbor : graph.getNodes()) {
                 if (graph.hasEdge(neighbor, city)) {
                     incoming += graph.getWeight(neighbor, city);
                 }
             }
 
-            // Calculate total outgoing population
+            // Calculate total outgoing people
             for (N neighbor : graph.getNodes()) {
                 if (graph.hasEdge(city, neighbor)) {
                     outgoing += graph.getWeight(city, neighbor);
